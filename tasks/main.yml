@@ -1,2 +1,5 @@
 ---
-# tasks file for ansible-role-mamba
+
+- include: deploy.yml
+  tags:
+    - mamba_install
