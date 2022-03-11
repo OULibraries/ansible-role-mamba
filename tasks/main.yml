@@ -3,3 +3,7 @@
 - include: deploy.yml
   tags:
     - mamba_install
+
+- include: initialize.yml
+  tags:
+    - mamba_init
