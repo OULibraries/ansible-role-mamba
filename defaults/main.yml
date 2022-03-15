@@ -1,11 +1,5 @@
 ---
 # defaults file for ansible-role-mamba
 
-python_version: 3.9
-micromamba_env_name: "dev_py39"
 micromamba_version: 0.20.0
 micromamba_download_checksum: sha256:4c666210cb885565f1345febdc9e7230a970c4915f5d99b9a47a88e6e5de7f04
-pip_install:
-    - requests==2.27.1
-    - celery==5.2.3
-    - pymongo==4.0.1
