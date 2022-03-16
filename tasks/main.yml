@@ -14,7 +14,7 @@
 - name: Download miniconda to /tmp/miniconda
   get_url:
     url: "https://repo.anaconda.com/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh"
-    dest: /tmp/miniconda/miniconda.sh
+    dest: /tmp/miniconda/
     checksum: "{{ mamba_miniconda_download_checksum }}"
 
 - name: Install miniconda
