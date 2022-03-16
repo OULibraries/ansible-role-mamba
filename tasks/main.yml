@@ -6,6 +6,11 @@
     state: present
     update_cache: true
 
+- name: Ensure path for miniconda install exists
+  file:
+    path: /opt/oulib/
+    state: directory
+
 - name: Create temporary working directory for miniconda
   file:
     path: /tmp/miniconda
@@ -18,7 +23,7 @@
     checksum: "{{ mamba_miniconda_download_checksum }}"
 
 - name: Install miniconda
-  command: bash /tmp/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh -b -p /usr/local/bin/miniconda
+  command: bash /tmp/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh -b -p /opt/oulib/
   become: true
 
 - name: Create temporary working directory
