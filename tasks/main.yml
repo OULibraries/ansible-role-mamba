@@ -23,7 +23,7 @@
     checksum: "{{ mamba_miniconda_download_checksum }}"
 
 - name: Install miniconda
-  command: bash /tmp/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh -b -p /opt/oulib/
+  command: bash /tmp/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh -b -p /opt/oulib/miniconda/
   become: true
 
 - name: Create temporary working directory
