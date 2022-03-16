@@ -1,5 +1,23 @@
 ---
 
+- name: Ensure necessary system packages are installed
+  yum:
+    name: [wget, tar, bzip2]
+    state: present
+    update_cache: true
+
+- name: Download, install, and cleanup of miniconda
+  block:
+    - name: Download miniconda to /tmp/miniconda
+      get_url:
+        url: "https://repo.anaconda.com/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh"
+        dest: /tmp/miniconda/miniconda.sh
+      checksum: "{{ mamba_miniconda_download_checksum }}"
+
+    - name: Install miniconda
+      command: bash /tmp/miniconda.sh -b -p /usr/local/bin/miniconda
+      become: true
+
 - name: Download, install, and cleanup of Micromamba
   block:
     - name: Create temporary working directory
@@ -9,9 +27,9 @@
 
     - name: Download micromamba to /tmp/micromamba/
       get_url:
-        url: "https://micro.mamba.pm/api/micromamba/linux-64/{{ micromamba_version }}"
+        url: "https://micro.mamba.pm/api/micromamba/linux-64/{{ mamba_micromamba_version }}"
         dest: /tmp/micromamba/micromamba.tar.bz2
-        checksum: "{{ micromamba_download_checksum }}"
+        checksum: "{{ mamba_micromamba_download_checksum }}"
 
     - name: Extract micromamba executable
       unarchive:

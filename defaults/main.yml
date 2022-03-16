@@ -1,5 +1,7 @@
 ---
 # defaults file for ansible-role-mamba
 
-micromamba_version: 0.20.0
-micromamba_download_checksum: sha256:4c666210cb885565f1345febdc9e7230a970c4915f5d99b9a47a88e6e5de7f04
+mamba_micromamba_version: 0.20.0
+mamba_micromamba_download_checksum: sha256:4c666210cb885565f1345febdc9e7230a970c4915f5d99b9a47a88e6e5de7f04
+mamba_miniconda_version: 4.11.0
+mamba_miniconda_download_checksum: sha256:00c7127a8a8d3f4b9c2ab3391c661239d5b9a88eafe895fd0f3f2a8d9c0f4556 
