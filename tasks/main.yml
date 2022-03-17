@@ -6,9 +6,9 @@
     state: present
     update_cache: true
 
-- name: Ensure path for miniconda install exists
+- name: Ensure paths for miniconda and micromamba installs exist
   file:
-    path: /opt/oulib/
+    path: [/opt/oulib/, /opt/oulib/micromamba/bin/]
     state: directory
 
 - name: Create temporary working directory for miniconda
@@ -46,7 +46,7 @@
   become: true
   copy:
     src: /tmp/micromamba/bin/micromamba
-    dest: /usr/local/bin/micromamba
+    dest: /opt/oulib/micromamba/bin/micromamba
     mode: 0555
 
 - name: Remove temporary files
