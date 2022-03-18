@@ -34,7 +34,7 @@
 
 - name: Create temporary working directory
   file:
-    path: /tmp/micromambda
+    path: /tmp/micromamba
     state: directory
 
 - name: Download micromamba to /tmp/micromamba/
