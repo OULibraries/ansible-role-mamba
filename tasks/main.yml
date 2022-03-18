@@ -1,36 +1,14 @@
 ---
 
-#- name: Ensure necessary system packages are installed
-#  yum:
-#    name: [wget, tar, bzip2]
-#    state: present
-#    update_cache: true
-
-#- name: Ensure path micromamba install exists
-#  file:
-#    path: [/opt/oulib/, /opt/oulib/micromamba/bin/]
-#    state: directory
-#  register: bin_paths 
-
-#- name: Create temporary working directory for miniconda
-#  file:
-#    path: /tmp/miniconda
-#    state: directory
-
-#- name: Download miniconda to /tmp/miniconda
-#  get_url:
-#    url: "https://repo.anaconda.com/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh"
-#    dest: /tmp/miniconda/
-#    checksum: "{{ mamba_miniconda_download_checksum }}"
-
-#- name: Install miniconda
-#  command: bash /tmp/miniconda/Miniconda3-py39_{{ mamba_miniconda_version }}-Linux-x86_64.sh -b -p /opt/oulib/miniconda/
-#  become: true
+- name: Ensure path for micromamba install exists
+  file:
+    path: /opt/oulib/micromamba/bin
+    state: directory
 
 - name: Create micromamba user
   user:
     name: micromamba
-    comment: User account for managing python environments and versions
+    comment: Service account for managing python environments and versions
 
 - name: Create temporary working directory
   file:
@@ -53,7 +31,9 @@
   become: true
   copy:
     src: /tmp/micromamba/bin/micromamba
-    dest: /home/micromamba
+    dest: /opt/oulib/micromamba/bin
+    owner: root
+    group: wheel
     mode: 0555
     remote_src: true
 
