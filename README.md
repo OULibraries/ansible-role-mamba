@@ -1,38 +1,54 @@
 OULibraries.mamba
 =========
 
-Example Ansible playbooks to deploy micromamba and create defined Python environments
+This Ansible role utilizes [the Mamba project](https://mamba.readthedocs.io/en/latest/) to bypass and protect the system Python on OU Libraries infrastructure. This role allows individuals to run multiple, newer versions of Python on OU Libraries instances without modifying the system Python or altering it in any way. This role can also be used to isolate dependencies between user and project on the same machine.
+
+This role:
+
+ - installs micromamba
+ - makes the binary available for execution
+ - creates a micromamba user where environments can be created
+ - adds some environment variables that can be set is desired
+ 
+
+ This role does NOT:
+ 
+ - initialize a base environment
+ - create any environments
+ - install any dependencies required by an environment
+
+Any additional functionaly will need to be handled by another playbook or by running additional roles.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+There are no known requirements to be met when running this role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+There are only two roles variables (found in `defaults/main.yml`). These variables should only need to be updated when switching to a different, newer version of Mamba.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role does not depend on any other roles. However, this roles should be run against a Linux box that has been recently updated.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+        - OULibraries.mamba
 
 License
 -------
 
-BSD
+[MIT](https://github.com/OULibraries/ansible-role-mamba/blob/master/LICENSE)
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+James Mitchell
