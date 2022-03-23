@@ -48,11 +48,12 @@
     remote_src: true
 
 - name: Copy helper files
-  copy: micromamba_env_setup
-  dest: /opt/oulib/micromamba/etc
-  owner: root
-  group: micromamba
-  mode: 0660
+  copy: 
+    src: micromamba_env_setup
+    dest: /opt/oulib/micromamba/etc
+    owner: root
+    group: micromamba
+    mode: 0660
 
 - name: Remove temporary files
   file:
