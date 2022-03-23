@@ -15,6 +15,11 @@
     name: micromamba
     comment: User account for managing python environments and versions
 
+- name: Ensure members of micromamba group can access the micromamba home dir
+  file:
+    path: /home/micromamba
+    mode: 0770
+
 - name: Create temporary working directory
   file:
     path: /tmp/micromamba
