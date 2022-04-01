@@ -35,7 +35,7 @@
   unarchive:
     src: /tmp/micromamba/micromamba.tar.bz2
     dest: /tmp/micromamba/
-    remote_src: true
+    #   remote_src: true
 
 - name: Install micromamba executable
   become: true
