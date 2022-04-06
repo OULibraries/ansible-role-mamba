@@ -1,5 +1,11 @@
 ---
 
+- name: Ensure module dependencies are installed on target
+  yum:
+    name: bzip2
+    state: present
+    update_cache: true
+
 - name: Ensure path for micromamba binary exists
   file:
     path: /opt/oulib/micromamba/bin
