@@ -22,7 +22,7 @@ Any additional functionaly will need to be handled by another playbook or by run
 Requirements
 ------------
 
-While the role should take care of this task for you, the system must have `bzip2` installed for the unarchive module to work.
+This roles assumes you are running it against a CentOS 7 machine.
 
 Role Variables
 --------------
@@ -32,16 +32,23 @@ There are only two roles variables (found in `defaults/main.yml`). These variabl
 Dependencies
 ------------
 
-This role does not depend on any other roles. However, this roles should be run against a Linux box that has been recently updated.
+- `bzip2`
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+To explicitly run this role in a playbook or role, add the following:
 
     - hosts: all
       roles:
         - OULibraries.mamba
+
+You can also add the role as a dependency in another role. For example, add the following to your `meta/main.yml` file:
+
+dependencies:
+  - role: OULibraries.mamba
+
+This inclusion will ensure the mamba role is run before the role on which it depends.
 
 License
 -------
