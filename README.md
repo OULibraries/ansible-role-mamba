@@ -22,7 +22,7 @@ Any additional functionaly will need to be handled by another playbook or by run
 Requirements
 ------------
 
-There are no known requirements to be met when running this role.
+While the role should take care of this task for you, the system must have `bzip2` installed for the unarchive module to work.
 
 Role Variables
 --------------
