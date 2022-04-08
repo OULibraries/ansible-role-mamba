@@ -45,8 +45,8 @@ To explicitly run this role in a playbook or role, add the following:
 
 You can also add the role as a dependency in another role. For example, add the following to your `meta/main.yml` file:
 
-dependencies:
-  - role: OULibraries.mamba
+    dependencies:
+      - role: OULibraries.mamba
 
 This inclusion will ensure the mamba role is run before the role on which it depends.
 
